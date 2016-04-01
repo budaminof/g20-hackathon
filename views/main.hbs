@@ -1,13 +1,27 @@
-<h1>main</h1>
-<table>
-    <tr>
-        <th>img</th>
-        <th>description</th>
-    </tr>
-    {{#stuff}}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='/stylesheets/main.css' />
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+    <script type='text/javascript' src='../public/js/main.js'></script>
+  </head>
+  <body>
+    <navbar>
+      <h3>Top Nav</h3>
+    </navbar>
+    <table>
         <tr>
-            <td><img src='{{this.img_url}}'></td>
-            <td>{{this.description}}</td>
+            <th>img</th>
+            <th>description</th>
         </tr>
-    {{/stuff}}
-</table>
+        {{#stuff}}
+            <tr>
+                <td><img src='{{this.img_url}}'></td>
+                <td>{{this.description}}</td>
+            </tr>
+        {{/stuff}}
+    </table>
+  </body>
+</html>
