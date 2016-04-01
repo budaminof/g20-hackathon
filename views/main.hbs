@@ -39,11 +39,13 @@
           <tr>
               <th>Image</th>
               <th>Description</th>
+              <th>Email</th>
           </tr>
           {{#stuff}}
               <tr>
                   <td><img src='{{this.img_url}}'></td>
                   <td class='description'><b>{{this.description}}</b></td>
+                  <td><a href="mailto:{{this.email}}?&amp;subject=Message%20from%20GearSwap&amp;body=Wanna%20trade?">email them</a></td>
               </tr>
           {{/stuff}}
         </table>

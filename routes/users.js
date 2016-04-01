@@ -14,7 +14,7 @@ function authorizedUser(req, res, next) {
 
 
 router.get('/main',authorizedUser, function(req, res, next) {
-  res.end('main');
+    res.render('main');
 });
 
 router.post('/new', (req, res) => {
@@ -48,7 +48,7 @@ router.post('/new', (req, res) => {
                     knex('users')
                         .insert({username: req.body.username.toLowerCase(), email: req.body.email, password:hash})
                         .then(function() {
-                            res.redirect('/main');//WHERE???
+                            res.redirect('/main');
                         })
                 }
             })
@@ -62,12 +62,11 @@ router.post('/login', function(req,res,next){
   .first()
   .then(function(response){
     if(response && bcrypt.compareSync(req.body.password, response.password)){
-      //LOOK HERE: Notice we set req.session.user to the current user before redirecting
      req.session.user = response.username;
      req.session.id = response.id;
+     req.session.email= response.email;
 
-
-      res.redirect('/main');
+     res.redirect('/main');
     } else {
       res.render('login', {error: 'Invalid username or password'});
     }
@@ -84,10 +83,10 @@ router.post('/gear', function (req, res, next){
             description: req.body.description,
             img_url: req.body.img_url
         })
-        .then(function (items){
-            res.redirect('/main');
+        .then(function (res){
+            res.render('main');
         })
-    })
+    });
 
 });
 
