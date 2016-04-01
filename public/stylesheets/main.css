@@ -52,3 +52,68 @@ button {
 button:hover {
   background-color: rgba(255, 140, 33, 0.8);
 }
+
+main {
+  display: flex;
+  justify-content: space-around;
+}
+
+.filters {
+  color: white;
+  text-align: left;
+  margin-top: 5%;
+  margin-left: -4%;
+  margin-right: 2%;
+}
+
+.listings {
+  flex-grow: 1;
+  width: 90%;
+  height: 100vh;
+  margin-top: 1%;
+  background-color: rgba(146, 155, 171, 0.9)
+}
+
+table {
+  margin: 2% 5%;
+}
+
+td {
+  border: 2px solid white;
+  border-radius: 6px;
+  margin-bottom: 1%;
+}
+
+td.description {
+  width: 100%;
+  padding-left: 2%;
+  font-size: 18px;
+}
+
+th {
+  font-size: 22px;
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
+.add-stuff {
+  margin-top: 5%;
+  margin-left: 2%;
+  color: white;
+}
+
+h3 {
+  text-align: center;
+  font-size: 28px;
+}
+
+label {
+  text-align: center;
+  margin-left: 20%;
+}
+
+input {
+  text-align: center;
+  margin: auto;
+}

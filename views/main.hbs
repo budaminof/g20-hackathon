@@ -8,34 +8,54 @@
     <script type='text/javascript' src='../public/js/main.js'></script>
   </head>
   <body>
+
     <navbar>
       <h3>Top Nav</h3>
     </navbar>
-    <table>
-        <tr>
-            <th>img</th>
-            <th>description</th>
-        </tr>
-        {{#stuff}}
+
+    <main>
+
+      <div class='filters'>
+        <h3>Sort by Type</h3>
+        <ul>
+          <li>Skiing/Snowboarding</li>
+          <li>Camping</li>
+          <li>Hiking</li>
+          <li>Biking</li>
+          <li>Yoga</li>
+        </ul>
+      </div>
+
+      <div class='listings'>
+        <table>
             <tr>
-                <td><img src='{{this.img_url}}'></td>
-                <td>{{this.description}}</td>
+                <th>Image</th>
+                <th>Description</th>
             </tr>
-        {{/stuff}}
-    </table>
-    <div class="add-suff">
-        <h3>Add listing</h3>
+            {{#stuff}}
+                <tr>
+                    <td><img src='{{this.img_url}}'></td>
+                    <td class='description'><b>{{this.description}}</b></td>
+                </tr>
+            {{/stuff}}
+        </table>
+      </div>
+
+      <div class="add-stuff">
+        <h3>Add Listing</h3>
         <form action="/users/gear" method="post">
-            <label>description</label>
+            <label>Description</label>
             <br>
             <input type="text" name="description">
             <br>
-            <label>image Url</label>
+            <label>Image Url</label>
             <br>
             <input type="text" name="img_url">
             <br>
             <input type="submit" value="Add">
         </form>
-    </div>
+      </div>
+
+    </main>
   </body>
 </html>
