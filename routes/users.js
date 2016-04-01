@@ -34,7 +34,7 @@ router.post('/new', (req, res) => {
     }
 
     if(errorArray.length > 0) {
-        res.render('signup', {title: 'gearSwap', errors: errorArray});
+        res.render('signup', {errors: errorArray});
     } else if (req.body.username && req.body.email && req.body.password && req.body.confirm) {
     knex('users')
         .where({username:req.body.username.toLowerCase()})
@@ -57,7 +57,7 @@ router.post('/new', (req, res) => {
 
 router.post('/login', function(req,res,next){
   knex('users')
-  .where('username', '=', req.body.username.toLowerCase())
+  .where('email', '=', req.body.email.toLowerCase())
   .first()
   .then(function(response){
     if(response && bcrypt.compareSync(req.body.password, response.password)){
