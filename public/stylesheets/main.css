@@ -95,6 +95,11 @@ td.description {
   font-size: 18px;
 }
 
+td.email {
+  padding: 5%;
+  font-size: 16px;
+}
+
 .listing-image {
   height: 150px;
   width: 150px;
@@ -127,6 +132,12 @@ h3.greeting {
   margin-right: 2%;
   margin-top: 1%;
   font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  text-align: center;
+  color: rgb(60,40,60);
 }
 
 .logout {
