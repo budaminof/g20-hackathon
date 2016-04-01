@@ -9,42 +9,61 @@
     <script type='text/javascript' src='../public/js/main.js'></script>
   </head>
   <body>
+
     <navbar>
-      <h3>Top Nav</h3>
+      <h3>Hello {{name}}</h3>
     </navbar>
-<h4>Hello {{name}}</h4>
-<div class='text-center videobox' style="position: relative;"display": flex; z-index: -99; width: 90%; height: 90%">
 
-<video autoplay loop poster="" class="text-center">
-        <source src="../video/fire.mov" type="video/mp4">
-    </video>
-</div>
+    <main>
 
-    <table>
-        <tr>
-            <th>img</th>
-            <th>description</th>
-        </tr>
-        {{#stuff}}
-            <tr>
-                <td><img src='{{this.img_url}}'></td>
-                <td>{{this.description}}</td>
-            </tr>
-        {{/stuff}}
-    </table>
+      <div class='filters'>
+        <h3>Sort by Type</h3>
+        <ul>
+          <li>Skiing/Snowboarding</li>
+          <li>Camping</li>
+          <li>Hiking</li>
+          <li>Biking</li>
+          <li>Yoga</li>
+        </ul>
+      </div>
+
+      <div class='listings'>
+        <!-- <div class='text-center videobox' style="position: relative;"display": flex; z-index: -99; width: 90%; height: 90%">
+
+        <video autoplay loop poster="" class="text-center">
+                <source src="../video/fire.mov" type="video/mp4">
+        </video> -->
+        <!-- </div> -->
+
+        <table>
+          <tr>
+              <th>Image</th>
+              <th>Description</th>
+          </tr>
+          {{#stuff}}
+              <tr>
+                  <td><img src='{{this.img_url}}'></td>
+                  <td class='description'><b>{{this.description}}</b></td>
+              </tr>
+          {{/stuff}}
+        </table>
+      </div>
+
     <div class="add-stuff">
         <h3>Add listing</h3>
         <form action="/users/gear" method="post">
-            <label>description</label>
+            <label>Description</label>
             <br>
             <input type="text" name="description">
             <br>
-            <label>image Url</label>
+            <label>Image Url</label>
             <br>
             <input type="text" name="img_url">
             <br>
             <input type="submit" value="Add">
         </form>
-    </div>
+      </div>
+
+    </main>
   </body>
 </html>
