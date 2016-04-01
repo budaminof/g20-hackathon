@@ -56,6 +56,7 @@ router.post('/new', (req, res) => {
 });
 
 router.post('/login', function(req,res,next){
+
   knex('users')
   .where('email', '=', req.body.email.toLowerCase())
   .first()
@@ -65,6 +66,7 @@ router.post('/login', function(req,res,next){
       //LOOK HERE: Notice we set req.session.user to the current user before redirecting
      req.session.user = response.username;
      req.session.id = response.id;
+
 
       res.redirect('/main');
     } else {
