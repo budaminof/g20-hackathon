@@ -13,4 +13,9 @@ router.get('/signup', function(req, res, next) {
   res.render('signup', { title: 'gearSwap' });
 });
 
+// GET login page
+router.get('/login', function(req, res, next){
+  res.render('login', { title: 'gearSwap' });
+});
+
 module.exports = router;

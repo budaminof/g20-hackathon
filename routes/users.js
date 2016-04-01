@@ -26,7 +26,7 @@ router.post('/new', (req, res) => {
     }
 
     if(errorArray.length > 0) {
-        res.render('signup', {errors: errorArray});
+        res.render('signup', {title: 'gearSwap', errors: errorArray});
     } else if (req.body.name && req.body.email && req.body.password && req.body.confirm) {
     knex('users')
         .where({name:req.body.name.toLowerCase()})

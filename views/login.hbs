@@ -9,26 +9,21 @@
   </head>
   <body>
     <h1>{{title}}</h1>
-    <form action='/users/new' method='post'>
+    <form action='/users/login' method='post'>
       <ul class='errors'>
         {{#errors}}
         <li><b>{{this}}</b></li>
         {{/errors}}
       </ul>
       <br>
-      <label for='name'>Name</label>
-      <input type='text' name='name'></input>
-      <br><br>
-      <label for='email'>Email</label>
+      <label for='name'>Email</label>
       <input type='text' name='email'></input>
       <br><br>
-      <label for='password'>Password</label>
+      <label for='email'>Password</label>
       <input type='password' name='password'></input>
       <br><br>
-      <label for='confirm'>Confirm Password</label>
-      <input type='password' name='confirm'></input>
       <br><br><br>
-      <button type='submit'>Start Swapping!</button>
+      <button type='submit'>Log In</button>
     </form>
   </body>
 </html>
