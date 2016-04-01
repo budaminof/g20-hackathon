@@ -46,6 +46,18 @@ router.post('/new', (req, res) => {
             })
     }
 });
+router.post('/login', function(req,res,next){
+  knex('users')
+  .where('name', '=', req.body.name.toLowerCase())
+  .first()
+  .then(function(response){
+    if(response && bcrypt.compareSync(req.body.password, response.password)){
+      res.redirect('/home');
+    } else {
+      res.render('auth', {error: 'Invalid username or password'});
+    }
+  });
+});
 
 
 module.exports = router;
