@@ -65,7 +65,8 @@ router.post('/login', function(req,res,next){
 
       //LOOK HERE: Notice we set req.session.user to the current user before redirecting
      req.session.user = response.username;
-     console.log(req.session.user);
+     req.session.id = response.id;
+
 
       res.redirect('/main');
     } else {
@@ -73,6 +74,25 @@ router.post('/login', function(req,res,next){
     }
   });
 });
+
+router.post('/gear', function (req, res, next){
+
+    knex('users')
+    .where({username: req.session.user})
+    .then(function(response){
+        knex('gear')
+        .insert({
+            owner_id: response[0].id,
+            description: req.body.description,
+            img_url: req.body.img_url
+        })
+        .then(function (items){
+            res.redirect('/main');
+        })
+    })
+
+});
+
 router.get('/logout', function(req, res) {
     res.clearCookie('session');
     req.flash('info', 'Come\'on back now!');
