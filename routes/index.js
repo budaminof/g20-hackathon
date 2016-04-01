@@ -23,7 +23,6 @@ router.get('/login', function(req, res, next){
 router.get('/main', function (req, res, next){
     knex('gear')
     .then(function(items){
-        console.log(items);
         res.render('main', {stuff: items});
     })
 });

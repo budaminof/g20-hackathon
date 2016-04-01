@@ -74,14 +74,19 @@ router.post('/login', function(req,res,next){
 });
 
 router.post('/gear', function (req, res, next){
-    knex('gear')
-    .insert({
-        owner_id: req.session.id,
-        description: req.body.description,
-        img_url: req.body.img_url
-    })
-    .then(function (items){
-        res.redirect('/main')
+
+    knex('users')
+    .where({username: req.session.user})
+    .then(function(response){
+        knex('gear')
+        .insert({
+            owner_id: response[0].id,
+            description: req.body.description,
+            img_url: req.body.img_url
+        })
+        .then(function (items){
+            res.redirect('/main');
+        })
     })
 
 });
