@@ -148,6 +148,10 @@ a {
   text-decoration: none;
 }
 
+.logout:hover {
+  color: rgb(230, 13, 229);
+}
+
 
 label {
   text-align: center;
