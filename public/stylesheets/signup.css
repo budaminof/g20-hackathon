@@ -26,6 +26,18 @@ p {
   margin-top: 1.5%;
 }
 
+.errors {
+  text-align: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.errors > li {
+  font-size: 18px;
+  color: red;
+}
+
 input {
   margin: auto;
   display: block;

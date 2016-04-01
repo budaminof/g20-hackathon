@@ -34,9 +34,8 @@ router.post('/new', (req, res) => {
     }
 
     if(errorArray.length > 0) {
-        res.render('signup', {errors: errorArray});
+        res.render('signup', {title: 'gearSwap', errors: errorArray});
     } else if (req.body.username && req.body.email && req.body.password && req.body.confirm) {
-
     knex('users')
         .where({username:req.body.username.toLowerCase()})
             .then(function(response) {
