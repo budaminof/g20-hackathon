@@ -57,7 +57,7 @@ router.post('/new', (req, res) => {
 
 router.post('/login', function(req,res,next){
   knex('users')
-  .where('username', '=', req.body.username.toLowerCase())
+  .where('email', '=', req.body.email.toLowerCase())
   .first()
   .then(function(response){
     if(response && bcrypt.compareSync(req.body.password, response.password)){
