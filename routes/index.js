@@ -21,12 +21,11 @@ router.get('/login', function(req, res, next){
 });
 
 router.get('/main', function (req, res, next){
-    knex('gear')
-    .then(function(items){
-        res.render('main', {stuff: items,
-        name: req.session.user});
+    knex('gear').leftJoin('users', 'gear.owner_id', 'users.id')
+    .then(function(results){
+        res.render('main', {stuff: results, name: req.session.user});
+   })
 
-    })
 });
 
 module.exports = router;
