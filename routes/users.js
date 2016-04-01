@@ -4,8 +4,17 @@ var knex = require('knex')(require('../knexfile')['development']);
 var bcrypt = require('bcryptjs');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+function authorizedUser(req, res, next) {
+  if (req.session.user) {
+    next();
+  } else {
+    res.redirect('/');
+  }
+}
+
+
+router.get('/main',authorizedUser, function(req, res, next) {
+  res.end('main');
 });
 
 router.post('/new', (req, res) => {
@@ -46,18 +55,29 @@ router.post('/new', (req, res) => {
             })
     }
 });
+
 router.post('/login', function(req,res,next){
   knex('users')
-  .where('name', '=', req.body.name.toLowerCase())
+  .where('username', '=', req.body.username.toLowerCase())
   .first()
   .then(function(response){
     if(response && bcrypt.compareSync(req.body.password, response.password)){
-      res.redirect('/home');
+
+      //LOOK HERE: Notice we set req.session.user to the current user before redirecting
+     req.session.user = response.username;
+
+      res.redirect('/main');
     } else {
-      res.render('auth', {error: 'Invalid username or password'});
+      res.render('login', {error: 'Invalid username or password'});
     }
   });
 });
+router.get('/logout', function(req, res) {
+    res.clearCookie('session');
+    req.flash('info', 'Come\'on back now!');
+    res.redirect('/');
+});
+
 
 
 module.exports = router;
