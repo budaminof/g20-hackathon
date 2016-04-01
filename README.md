@@ -1,7 +1,7 @@
 ######################
 
-this is our first hackaton!
+This is our first hackaton!
 
 gearSwap app.
 
-//git tag release1
+DON'T FORGET to npm install.
