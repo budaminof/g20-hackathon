@@ -1,0 +1,27 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url(http://i.imgur.com/x61cTgo.jpg);
+  background-size: cover;
+  back
+}
+
+a {
+  color: #00B7FF;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 96px;
+  color: white;
+  text-align: center;
+  margin-top: -5%;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 20px;
+  color:white;
+  text-align: center;
+  margin-top: 1.5%;
+}

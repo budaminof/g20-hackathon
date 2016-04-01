@@ -1,0 +1,43 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url(http://i.imgur.com/x61cTgo.jpg);
+  background-size: cover;
+  back
+}
+
+a {
+  color: #00B7FF;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 152px;
+  color: white;
+  text-align: center;
+  margin-top: -5%;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 28px;
+  color:white;
+  text-align: center;
+  margin-top: 9.5%;
+}
+
+.landing-buttons {
+  display: flex;
+  margin: 0 40%;
+}
+
+#signup, #login {
+  font-size: 22px;
+  color: white;
+  background-color: rgba(87, 87, 87, 0.8);
+  text-align: center;
+  text-decoration: none;
+  margin: auto;
+  padding: 2%;
+  border-radius: 8px;
+}
