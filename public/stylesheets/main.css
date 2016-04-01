@@ -103,6 +103,11 @@ th {
   color: white;
 }
 
+.listings {
+    max-height: 1000px;
+    overflow: scroll;
+}
+
 h3 {
   text-align: center;
   font-size: 28px;
