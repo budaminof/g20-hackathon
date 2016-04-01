@@ -7,12 +7,11 @@ var bcrypt = require('bcryptjs');
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
+
 router.post('/new', (req, res) => {
 
-
-
     var errorArray = [];
-    if (!req.body.name) {
+    if (!req.body.username) {
         errorArray.push('Please enter a name');
     }
     if (!req.body.email) {
@@ -27,9 +26,10 @@ router.post('/new', (req, res) => {
 
     if(errorArray.length > 0) {
         res.render('signup', {errors: errorArray});
-    } else if (req.body.name && req.body.email && req.body.password && req.body.confirm) {
+    } else if (req.body.username && req.body.email && req.body.password && req.body.confirm) {
+
     knex('users')
-        .where({name:req.body.name.toLowerCase()})
+        .where({username:req.body.username.toLowerCase()})
             .then(function(response) {
                 if (response.length > 0) {
                     res.render('signup', {
@@ -38,7 +38,7 @@ router.post('/new', (req, res) => {
                 } else {
                     var hash = bcrypt.hashSync(req.body.password, 8);
                     knex('users')
-                        .insert({name: req.body.name.toLowerCase(), email: req.body.email, password:hash})
+                        .insert({username: req.body.username.toLowerCase(), email: req.body.email, password:hash})
                         .then(function() {
                             res.redirect('/people');//WHERE???
                         })
