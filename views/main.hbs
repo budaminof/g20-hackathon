@@ -23,5 +23,19 @@
             </tr>
         {{/stuff}}
     </table>
+    <div class="add-suff">
+        <h3>Add listing</h3>
+        <form action="/users/gear" method="post">
+            <label>description</label>
+            <br>
+            <input type="text" name="description">
+            <br>
+            <label>image Url</label>
+            <br>
+            <input type="text" name="img_url">
+            <br>
+            <input type="submit" value="Add">
+        </form>
+    </div>
   </body>
 </html>
