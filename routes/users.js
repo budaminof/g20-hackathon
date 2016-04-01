@@ -61,7 +61,6 @@ router.post('/login', function(req,res,next){
   .first()
   .then(function(response){
     if(response && bcrypt.compareSync(req.body.password, response.password)){
-
       //LOOK HERE: Notice we set req.session.user to the current user before redirecting
      req.session.user = response.username;
      req.session.id = response.id;
@@ -74,7 +73,6 @@ router.post('/login', function(req,res,next){
 });
 
 router.post('/gear', function (req, res, next){
-
     knex('users')
     .where({username: req.session.user})
     .then(function(response){
