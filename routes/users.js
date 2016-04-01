@@ -83,8 +83,8 @@ router.post('/gear', function (req, res, next){
             description: req.body.description,
             img_url: req.body.img_url
         })
-        .then(function (res){
-            res.render('main');
+        .then(function (items){
+            res.redirect('/main');
         })
     });
 
