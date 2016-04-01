@@ -1,0 +1,13 @@
+<h1>main</h1>
+<table>
+    <tr>
+        <th>img</th>
+        <th>description</th>
+    </tr>
+    {{#stuff}}
+        <tr>
+            <td><img src='{{this.img_url}}'></td>
+            <td>{{this.description}}</td>
+        </tr>
+    {{/stuff}}
+</table>

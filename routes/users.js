@@ -40,7 +40,7 @@ router.post('/new', (req, res) => {
                     knex('users')
                         .insert({username: req.body.username.toLowerCase(), email: req.body.email, password:hash})
                         .then(function() {
-                            res.redirect('/people');//WHERE???
+                            res.redirect('/main');//WHERE???
                         })
                 }
             })
