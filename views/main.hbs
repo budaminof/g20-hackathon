@@ -11,7 +11,8 @@
   <body>
 
     <navbar>
-      <h3>Hello {{name}}</h3>
+      <h3 class='greeting'>Hello {{name}}</h3>
+      <a class='logout' href='/users/logout'>Log Out</a>
     </navbar>
 
     <main>
@@ -19,11 +20,15 @@
       <div class='filters'>
         <h3>Sort by Type</h3>
         <ul>
-          <li>Skiing/Snowboarding</li>
+          <li>Skiing</li>
+          <li>Snowboarding</li>
           <li>Camping</li>
           <li>Hiking</li>
           <li>Biking</li>
           <li>Yoga</li>
+          <li>Rock Climbing</li>
+          <li>Men's Clothing</li>
+          <li>Women's Clothing</li>
         </ul>
       </div>
 
@@ -42,7 +47,7 @@
           </tr>
           {{#stuff}}
               <tr>
-                  <td><img src='{{this.img_url}}'></td>
+                  <td class='listing-image'><img src='{{this.img_url}}'></td>
                   <td class='description'><b>{{this.description}}</b></td>
               </tr>
           {{/stuff}}
@@ -50,17 +55,17 @@
       </div>
 
     <div class="add-stuff">
-        <h3>Add listing</h3>
+        <h3>Add Listing</h3>
         <form action="/users/gear" method="post">
             <label>Description</label>
             <br>
             <input type="text" name="description">
-            <br>
+            <br><br>
             <label>Image Url</label>
             <br>
             <input type="text" name="img_url">
-            <br>
-            <input type="submit" value="Add">
+            <br><br><br>
+            <input id="add" type="submit" value="Add">
         </form>
       </div>
 
