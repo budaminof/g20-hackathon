@@ -4,6 +4,8 @@ var knex = require('knex')(require('../knexfile')['development']);
 var bcrypt = require('bcryptjs');
 
 /* GET home page. */
+
+
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'gearSwap' });
 });
@@ -16,6 +18,14 @@ router.get('/signup', function(req, res, next) {
 // GET login page
 router.get('/login', function(req, res, next){
   res.render('login', { title: 'gearSwap' });
+});
+
+router.get('/main', function (req, res, next){
+    knex('gear')
+    .then(function(items){
+        console.log(items);
+        res.render('main', {stuff: items});
+    })
 });
 
 module.exports = router;

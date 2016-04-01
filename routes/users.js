@@ -4,15 +4,23 @@ var knex = require('knex')(require('../knexfile')['development']);
 var bcrypt = require('bcryptjs');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+function authorizedUser(req, res, next) {
+  if (req.session.user) {
+    next();
+  } else {
+    res.redirect('/');
+  }
+}
+
+
+router.get('/main',authorizedUser, function(req, res, next) {
+  res.end('main');
 });
+
 router.post('/new', (req, res) => {
 
-
-
     var errorArray = [];
-    if (!req.body.name) {
+    if (!req.body.username) {
         errorArray.push('Please enter a name');
     }
     if (!req.body.email) {
@@ -27,9 +35,9 @@ router.post('/new', (req, res) => {
 
     if(errorArray.length > 0) {
         res.render('signup', {title: 'gearSwap', errors: errorArray});
-    } else if (req.body.name && req.body.email && req.body.password && req.body.confirm) {
+    } else if (req.body.username && req.body.email && req.body.password && req.body.confirm) {
     knex('users')
-        .where({name:req.body.name.toLowerCase()})
+        .where({username:req.body.username.toLowerCase()})
             .then(function(response) {
                 if (response.length > 0) {
                     res.render('signup', {
@@ -38,14 +46,37 @@ router.post('/new', (req, res) => {
                 } else {
                     var hash = bcrypt.hashSync(req.body.password, 8);
                     knex('users')
-                        .insert({name: req.body.name.toLowerCase(), email: req.body.email, password:hash})
+                        .insert({username: req.body.username.toLowerCase(), email: req.body.email, password:hash})
                         .then(function() {
-                            res.redirect('/people');//WHERE???
+                            res.redirect('/main');//WHERE???
                         })
                 }
             })
     }
 });
+
+router.post('/login', function(req,res,next){
+  knex('users')
+  .where('username', '=', req.body.username.toLowerCase())
+  .first()
+  .then(function(response){
+    if(response && bcrypt.compareSync(req.body.password, response.password)){
+
+      //LOOK HERE: Notice we set req.session.user to the current user before redirecting
+     req.session.user = response.username;
+
+      res.redirect('/main');
+    } else {
+      res.render('login', {error: 'Invalid username or password'});
+    }
+  });
+});
+router.get('/logout', function(req, res) {
+    res.clearCookie('session');
+    req.flash('info', 'Come\'on back now!');
+    res.redirect('/');
+});
+
 
 
 module.exports = router;
