@@ -101,8 +101,8 @@ td.email {
 }
 
 .listing-image {
-  height: 150px;
-  width: 150px;
+  max-height: 150px;
+  max-width: 150px;
 }
 
 th {
