@@ -68,7 +68,7 @@ router.post('/login', function(req,res,next){
 
      res.redirect('/main');
     } else {
-      res.render('login', {error: 'Invalid username or password'});
+      res.render('login', {errors: 'Invalid username or password'});
     }
   });
 });
