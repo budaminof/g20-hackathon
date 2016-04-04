@@ -92,7 +92,6 @@ router.post('/gear', function (req, res, next){
 
 router.get('/logout', function(req, res) {
     res.clearCookie('session');
-    req.flash('info', 'Come\'on back now!');
     res.redirect('/');
 });
 

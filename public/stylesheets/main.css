@@ -66,11 +66,16 @@ main {
   margin-right: 2%;
 }
 
+.filters > ul > li {
+  padding: 0;
+  margin-left: -10%;
+}
+
 .listings {
   flex-grow: 1;
   width: 90%;
-  height: 100vh;
-  margin-top: 1%;
+  height: 100%;
+  margin-top: 0.9%;
   background-color: rgba(146, 155, 171, 0.9)
 }
 
@@ -90,9 +95,20 @@ td.description {
   font-size: 18px;
 }
 
+td.email {
+  padding: 5%;
+  font-size: 16px;
+}
+
+.listing-image {
+  max-height: 150px;
+  max-width: 150px;
+}
+
 th {
   font-size: 22px;
   margin: auto;
+  margin-bottom: 2%;
   text-align: center;
   color: white;
 }
@@ -101,6 +117,9 @@ th {
   margin-top: 5%;
   margin-left: 2%;
   color: white;
+}
+.add-stuff > h3 {
+  margin-left: 20%;
 }
 
 .listings {
@@ -113,12 +132,43 @@ h3 {
   font-size: 28px;
 }
 
+h3.greeting {
+  text-align: right;
+  margin-right: 2%;
+  margin-top: 1%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  text-align: center;
+  color: rgb(60,40,60);
+}
+
+.logout {
+  text-align: right;
+  position: absolute;
+  right: 6.5%;
+  top: 65%;
+  text-decoration: none;
+}
+
+.logout:hover {
+  color: rgb(230, 13, 229);
+}
+
+
 label {
   text-align: center;
-  margin-left: 20%;
+  margin-left: 35%;
 }
 
 input {
   text-align: center;
   margin: auto;
+  width: 120%;
+}
+
+#add {
+  margin-left: 1.5%;
 }
